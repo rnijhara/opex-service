@@ -15,6 +15,9 @@ async function generateChart(chartConfig: ChartConfig) {
   const table = chartConfig.config.table;
   const entity = entities[table];
   const data = await entity.find();
+  if (!data) {
+    return
+  }
   return transformToCirclePacking(data, chartConfig);
 }
 
